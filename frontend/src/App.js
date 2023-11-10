@@ -11,8 +11,9 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("All");
 
+
   useEffect(() => {
-    axios.get('http://localhost:3004/app/get').then((response) => {
+    axios.get('http://localhost:4000/app/get').then((response) => {
       setTasks(response.data);
     })
   });
@@ -52,7 +53,7 @@ function App() {
   ));
 
   function addTask(newName) {
-    axios.post("http://localhost:3004/app/post", {
+    axios.post("http://localhost:4000/app/post", {
       id: `todo-${nanoid()}`,
       name: newName,
       completed: false,
@@ -61,7 +62,7 @@ function App() {
 
   function toggleTaskCompleted(id, completed){
 
-    axios.put(`http://localhost:3004/app/putToggle/${id}`, {completed: !completed})
+    axios.put(`http://localhost:4000/app/putToggle/${id}`, {completed: !completed})
     .then(response =>{
       setTasks(response.data.tasks);
     })
@@ -72,7 +73,7 @@ function App() {
 
   function deleteTask(id){
 
-    axios.delete(`http://localhost:3004/app/delete/${id}`)
+    axios.delete(`http://localhost:4000/app/delete/${id}`)
     .then(responce => {
       setTasks(responce.data.tasks);
     })
@@ -83,7 +84,7 @@ function App() {
 
   function editTask(id, newName){
 
-    axios.put(`http://localhost:3004/app/putName/${id}`, {name: newName})
+    axios.put(`http://localhost:4000/app/putName/${id}`, {name: newName})
     .then(response =>{
       const updatedTasks = response.data.tasks;
       setTasks(updatedTasks);

@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  #Database
+  db:
+    image: mysql:5.7
+    volumes:
+      - db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - backend
+  #phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password 
+    networks:
+      - backend
+  #Node JS
+  backend:
+    depends_on:
+      - db
+    build: ./backend    
+    container_name: backend
+    ports:      
+      - '4000:4000'
+    networks:
+      - backend
+      - frontend
+  #React
+  frontend:
+    depends_on:
+      - backend
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - '3000:3000'
+    networks:
+      - frontend
+
+volumes: 
+  db:
+  backend:
+  frontend:
+
+networks:
+  backend:
+  frontend:

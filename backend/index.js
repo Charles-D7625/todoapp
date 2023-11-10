@@ -1,13 +1,15 @@
 const express  = require('express');
 const app = express();
 const cors = require('cors');
+const port =  process.env.PORT || 4000;
 
 const mysql = require('mysql');
 
+
 const connetion = mysql.createConnection({
-    host: 'localhost',
+    host: 'db',
     user: 'root',
-    password: '',
+    password: 'password',
     database: 'test',
 });
 
@@ -28,6 +30,7 @@ connetion.connect(function(err) {
     if(err) {
         console.log(err.code);
         console.log(err.fatal);
+        console.log("faild connect to database!");
     }
 
     connetion.query("SELECT * FROM todolist", function(err, result, fields) {
@@ -55,7 +58,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    
+    res.send("Cooqwewerwerwql");
 })
 
 app.get('/app/get', (req, res) => {
@@ -112,6 +115,6 @@ app.delete('/app/delete/:id', (req, res) => {
 })
 
 
-app.listen(3004, () => {
-    console.log('Server is running');
+app.listen(port, () => {
+    console.log('Server is running on port', port);
 })
