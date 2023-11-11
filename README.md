@@ -14,4 +14,4 @@
 
 ### `npm run build`
 
-В файлах `frontend/App.js`, `backend/index.js` изменить адресные строки и данные для подключения к бд на соответствующие
+В файлах `frontend/App.js`, `backend/index.js`, `docker-compose.yml` изменить адресные строки и данные для подключения к бд на соответствующие
