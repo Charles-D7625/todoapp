@@ -1,18 +1,17 @@
 # Начало работы с React-приложением
 
+Для запуска приложения должен быть установлен `Docker-compose`
+
+Команда для запуска: ../todoapp> `docker-compose up`
+
 ### `Frontend`
 
-Для запуска приложения прописать  `npm start` в папке `frontend`
+Для запуска react-приложения: ../todoapp/frontend> `npm start` в папке `frontend`
 
 ### `Backend`
 
-После в папке `backend` прописать `npm run dev`
+Для запуска node js-приложения:../todoapp/backend> `npm run dev`
 
 ### `npm run build`
 
-### `XAMPP`
-
-В качестве локального сервера использовался Apache, MySQL. Для запуска рекомендуется устноавить XAMPP, либо самому настроить сервер.
-
-После экспортировать следующую базу данных: [test.sql](https://github.com/Charles-D7625/todoapp/releases/tag/Database)
-
+В файлах `frontend/App.js`, `backend/index.js` изменить адресные строки и данные для подключения к бд на соответствующие
