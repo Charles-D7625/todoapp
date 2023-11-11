@@ -12,6 +12,4 @@
 
 Для запуска node js-приложения:../todoapp/backend> `npm run dev`
 
-### `npm run build`
-
 В файлах `frontend/App.js`, `backend/index.js`, `docker-compose.yml` изменить адресные строки и данные для подключения к бд на соответствующие
